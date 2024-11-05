@@ -1,0 +1,15 @@
+<div class="container" [class.sidebar-hidden]="isSidebarHidden">
+  <app-sidebar [hidden]="isSidebarHidden"></app-sidebar>
+  <div class="main-content">
+    <h1>Área Principal de Conteúdo</h1>
+    <button class="toggle-sidebar" (click)="toggleSidebar()">
+      Alternar Barra Lateral
+    </button>
+    <p>
+      Aqui está a área principal de conteúdo. O submenu deve ser sobreposto a este
+      conteúdo quando expandido.
+    </p>
+  </div>
+</div>
+
+

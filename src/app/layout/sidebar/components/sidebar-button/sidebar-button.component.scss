@@ -1,0 +1,16 @@
+.sidebar__button {
+  display: block;
+  width: 100%;
+  color: #fff;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover,
+  &:focus {
+    background-color: #34495e;
+  }
+}

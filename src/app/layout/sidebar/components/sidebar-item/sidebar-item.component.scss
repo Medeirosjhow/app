@@ -1,0 +1,144 @@
+/* Importar variáveis globais (se houver) */
+@import '../../../../../styles.scss';
+
+
+/* Estilos para o item da lista */
+li {
+  position: relative;
+
+  &.first-level {
+    /* Estilos específicos para itens de primeiro nível (se necessário) */
+  }
+
+  &.second-level {
+    /* Estilos para itens de segundo nível (se necessário) */
+  }
+
+  &.sub-level {
+    /* Estilos específicos para itens de subnível (níveis maiores que 2) */
+  }
+}
+
+/* Estilos para o conteúdo do item da sidebar */
+.sidebar-item {
+  .sidebar__button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #fff;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover,
+    &:focus {
+      background-color: #34495e;
+    }
+
+    .icon {
+      margin-right: 0.5rem;
+    }
+
+    .expand-icon {
+      margin-left: auto;
+    }
+  }
+
+  a.sidebar__button {
+    text-decoration: none;
+  }
+}
+
+/* Submenu do primeiro nível (aparece ao lado da sidebar) */
+.sidebar__submenu--first-level {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: $sidebar-width; /* Posiciona o submenu imediatamente após a sidebar */
+  width: $sidebar-width; /* Ajuste a largura conforme necessário */
+  height: 100vh;
+  background-color: #34495e;
+  padding: 1rem;
+  z-index: 1;
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* Mostrar o submenu de primeiro nível quando visível */
+.sidebar__submenu--first-level.visible {
+  display: block;
+}
+
+/* Submenu do segundo nível (expande para baixo) */
+.sidebar__submenu--second-level {
+  list-style: none;
+  padding-left: 0;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+
+.sidebar__submenu--second-level .sidebar-item {
+  .sidebar__button {
+    padding-left: 1rem; /* Indentação para indicar hierarquia */
+  }
+}
+
+/* Submenu de níveis mais profundos (expande abaixo do item pai) */
+.sidebar__submenu--sub-level {
+  list-style: none;
+  padding-left: 0;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+
+.sidebar__submenu--sub-level .sidebar-item {
+  .sidebar__button {
+    padding-left: 1.5rem; /* Indentação adicional para níveis mais profundos */
+  }
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .sidebar__submenu--first-level {
+    left: 100%; /* Submenu ocupa a próxima coluna */
+  }
+}
+
+/* Estilos para controle de expandir/recolher */
+li .sidebar__submenu--second-level,
+li .sidebar__submenu--sub-level {
+  display: none;
+}
+
+li .sidebar__submenu--second-level.visible,
+li .sidebar__submenu--sub-level.visible {
+  display: block;
+}
+
+/* Animação para a expansão dos submenus */
+li .sidebar__submenu--second-level,
+li .sidebar__submenu--sub-level {
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+  max-height: 0;
+}
+
+li .sidebar__submenu--second-level.visible,
+li .sidebar__submenu--sub-level.visible {
+  max-height: 500px; /* Ajuste este valor conforme necessário */
+}

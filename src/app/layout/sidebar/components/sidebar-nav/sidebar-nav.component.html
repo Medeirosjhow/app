@@ -1,28 +1,5 @@
 <ul class="sidebar__nav">
-  <li>
-    <app-sidebar-button label="Dashboard"></app-sidebar-button>
-  </li>
-  <li>
-    <app-sidebar-button label="Gestão de Regras"></app-sidebar-button>
-  </li>
-  <li>
-    <app-sidebar-submenu label="Configurações do Sistema">
-      <ul>
-        <li>
-          <app-sidebar-submenu-item label="Canais">
-            <app-sidebar-subitems
-              [items]="['Subitem 1', 'Subitem 2']"
-            ></app-sidebar-subitems>
-          </app-sidebar-submenu-item>
-        </li>
-        <!-- Repita para outros itens do submenu -->
-      </ul>
-    </app-sidebar-submenu>
-  </li>
-  <li>
-    <app-sidebar-button label="Auditoria"></app-sidebar-button>
-  </li>
-  <li>
-    <app-sidebar-button label="Usuários e Permissões"></app-sidebar-button>
-  </li>
+  <ng-container *ngFor="let item of menuItems">
+    <app-sidebar-item [item]="item" [level]="0"></app-sidebar-item>
+  </ng-container>
 </ul>

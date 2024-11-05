@@ -75,7 +75,6 @@ export const MENU_ITEMS: MenuItem[] = [
       {
         id: 10,
         label: 'Canais',
-        link: '/channel',
         ariaLabel: 'Canais',
         expanded: false,
         children: [
@@ -183,13 +182,6 @@ export const MENU_ITEMS: MenuItem[] = [
         link: '/notification',
         ariaLabel: 'Notificações',
         icon: 'notificacao_outline',
-      },
-      {
-        id: 26,
-        label: 'Sair',
-        link: '/logout',
-        ariaLabel: 'Sair',
-        icon: 'sair',
       },
     ],
   },

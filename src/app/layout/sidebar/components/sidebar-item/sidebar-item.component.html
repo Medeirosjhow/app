@@ -1,0 +1,35 @@
+<li [ngClass]="{'first-level': level === 0, 'sub-level': level > 0}">
+  <div class="sidebar-item">
+    <a
+      [routerLink]="item.link"
+      [attr.aria-label]="item.ariaLabel"
+      class="sidebar__button"
+      (click)="onItemClick($event)"
+    >
+      {{ item.label }}
+      <span *ngIf="item.children" class="expand-icon">{{ isExpanded ? '-' : '+' }}</span>
+    </a>
+  </div>
+
+  <!-- Submenu para o primeiro nível (aparece ao lado) -->
+  <div
+    *ngIf="item.children && isExpanded && level === 0"
+    class="sidebar__submenu sidebar__submenu--first-level visible"
+  >
+    <ul>
+      <ng-container *ngFor="let child of item.children">
+        <app-sidebar-item [item]="child" [level]="level + 1"></app-sidebar-item>
+      </ng-container>
+    </ul>
+  </div>
+
+  <!-- Submenu para níveis mais profundos (aparece abaixo) -->
+  <ul
+    *ngIf="item.children && isExpanded && level > 0"
+    class="sidebar__submenu sidebar__submenu--sub-level visible"
+  >
+    <ng-container *ngFor="let child of item.children">
+      <app-sidebar-item [item]="child" [level]="level + 1"></app-sidebar-item>
+    </ng-container>
+  </ul>
+</li>
